@@ -9,16 +9,16 @@
 version: '3.9'
 
 services:
-  # An Apodini Example Web Service
-  example-web-service:
-    container_name: "template-web-service"
-    image: "apodini/template:latest"
+  # ApodiniSustainabilityDemo
+  apodini-sustainability:
+    container_name: "apodini-sustainability"
+    image: "apodini/sustainability:latest"
     build:
       context: ./
       dockerfile: ./Dockerfile
     expose:
       - "80"
-    command: ["--port", "80"]
+    command: ["--port", "80", "--endpoint", "sustainability"]
     labels:
       # The domain the service will respond to
       - "traefik.http.routers.backend.rule=Host(`localhost`)"

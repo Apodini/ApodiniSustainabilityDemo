@@ -19,8 +19,7 @@ jobs:
     name: Build and Test
     uses: Apodini/.github/.github/workflows/build-and-test.yml@v1
     with:
-      packagename: ApodiniTemplate
-      testdocc: false
+      packagename: ApodiniSustainabilityDemo
   docker-compose-test:
     name: Docker Compose Test
     uses: Apodini/.github/.github/workflows/docker-compose-test.yml@v1

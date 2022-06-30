@@ -33,18 +33,7 @@ RUN swift build -c release
 WORKDIR /staging
 
 # Copy main executable to staging area
-RUN cp "$(swift build --package-path /build -c release --show-bin-path)/WebService" ./
-
-# Copy resources from the resources directory if the directories exist
-# Ensure that by default, neither the directory nor any of its contents are writable.
-RUN [ -d "$(swift build --package-path /build -c release --show-bin-path)/Apodini_ApodiniOpenAPI.resources" ] \
-    && mv "$(swift build --package-path /build -c release --show-bin-path)/Apodini_ApodiniOpenAPI.resources" ./ \
-    && chmod -R a-w ./Apodini_ApodiniOpenAPI.resources \
-    || echo No resources to copy
-RUN [ -d "$(swift build --package-path /build -c release --show-bin-path)/WebService_ApodiniTemplate.resources" ] \
-    && mv "$(swift build --package-path /build -c release --show-bin-path)/WebService_ApodiniTemplate.resources" ./ \
-    && chmod -R a-w ./WebService_ApodiniTemplate.resources \
-    || echo No resources to copy
+RUN cp "$(swift build --package-path /build -c release --show-bin-path)/FlightBooking" ./
 
 # ================================
 # Run image
@@ -70,5 +59,4 @@ COPY --from=build --chown=apodini:apodini /staging /app
 USER apodini:apodini
 
 # Start the Apodini service when the image is run.
-# The default port is 80. Can be adapted using the `--port` argument
-ENTRYPOINT ["./WebService"]
+ENTRYPOINT ["./FlightBooking"]
