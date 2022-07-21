@@ -15,7 +15,7 @@ services:
     image: "ghcr.io/apodini/sustainability:latest"
     expose:
       - "80"
-    command: ["--port", "80", "--endpoint", "sustainability"]
+    command: ["--endpoint", "sustainability"]
     labels:
       # The domain the service will respond to
       - "traefik.http.routers.backend.rule=Host(`localhost`)"
